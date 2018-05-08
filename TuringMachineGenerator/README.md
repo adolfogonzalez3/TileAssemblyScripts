@@ -1,6 +1,6 @@
 # Turing Machine Generator
 
-This set of scripts is used to generate tiles for a Turing Machine based on the design in the paper [The program-size complexity of self-assembled squares](https://dl.acm.org/citation.cfm?id=335358).
+This set of scripts is used to generate tiles for a Turing Machine based on the design in the paper "[The program-size complexity of self-assembled squares](https://dl.acm.org/citation.cfm?id=335358)".
 
 The format of the turing machine is as follows:
 
@@ -22,7 +22,7 @@ Language Definition:
 - D -> L
 - D -> R
 
-<p>Each line in the text file represents a state's id in the Turing Machine.</p>
+Each line in the text file represents a state's id in the Turing Machine.
 
 An example would be:
 
