@@ -16,8 +16,9 @@ Language Definition:
 - E -> X>Y,E
 - X -> s
 - X -> s/X
-- Y -> s/D/i
-- Y -> _/D/i
+- Y -> T/D/i
+- T -> s
+- T -> _
 - D -> L
 - D -> R
 
@@ -30,5 +31,5 @@ An example would be:
 
 ```
 
-These two lines would produce a tile set which simulates a Turing Machine which replaces all zeros with ones in a binary string.
+These two lines would produce a tile set which simulates a Turing Machine which replaces all zeros with ones in a binary string provided on the tape.
 
