@@ -1,12 +1,8 @@
-
-
-class tile:
-    def __init__(self, north, east, south, west, name='None'):
-        self.north = north
-        self.south = south
-        self.east = east
-        self.west = west
-        self.name = name
+import sys
+print(sys.path)
+sys.path.append("Common/")
+print(sys.path)
+from Tile import Tile
 
 class transition_obj:
     def __init__(self,inputs, place, currentState, nextState, direction):
@@ -57,12 +53,12 @@ def create_tiles_and_glues(transitions,symbols):
                     place = a
                 else:
                     place = tran.place
-                tiles.append(tile(place, '{!s}/seq{!s}'.format(state,i),
+                tiles.append(Tile(place, '{!s}/seq{!s}'.format(state,i),
                             '{!s}/{!s}'.format(state, a), 'BL', str(a)))
                 strong.append('{!s}/{!s}'.format(state, a))
                 weak.append('{!s}/seq{!s}'.format(state,i))
             for a in symbols:
-                tiles.append(tile('{!s}/{!s}'.format(nextState, a), 'BR', a,
+                tiles.append(Tile('{!s}/{!s}'.format(nextState, a), 'BR', a,
                             '{!s}/seq{!s}'.format(state, i), str(a)))
                 strong.append('{!s}/{!s}'.format(nextState, a))
                 weak.append('{!s}/seq{!s}'.format(state,i))
@@ -72,12 +68,12 @@ def create_tiles_and_glues(transitions,symbols):
                     place = a
                 else:
                     place = tran.place
-                tiles.append(tile(place, 'BR', '{!s}/{!s}'.format(state, a),
+                tiles.append(Tile(place, 'BR', '{!s}/{!s}'.format(state, a),
                             '{!s}/seq{!s}'.format(state,i), str(a)))
                 strong.append('{!s}/{!s}'.format(state, a))
                 weak.append('{!s}/seq{!s}'.format(state,i))
             for a in symbols:
-                tiles.append(tile('{!s}/{!s}'.format(nextState, a),
+                tiles.append(Tile('{!s}/{!s}'.format(nextState, a),
                             '{!s}/seq{!s}'.format(state, i), a, 'BL', str(a)))
                 strong.append('{!s}/{!s}'.format(nextState, a))
                 weak.append('{!s}/seq{!s}'.format(state,i))
@@ -122,19 +118,19 @@ if __name__ == '__main__':
         glues.append((g,g,1))
     for g in symbols:
         glues.append((g,g,1))
-        tiles.append(tile(g, 'BR', g, 'BR', g))
-        tiles.append(tile(g, 'BL', g, 'BL', g))
+        tiles.append(Tile(g, 'BR', g, 'BR', g))
+        tiles.append(Tile(g, 'BL', g, 'BL', g))
     glues.append(('BR','BR',1))
     glues.append(('BL','BL',1))
-    tiles.append(tile('h_0/1', 'seed_0','B','B', '1'))
-    tiles.append(tile('0', 'seed_1','B','seed_0', '0'))
-    tiles.append(tile('1', 'seed_2','B','seed_1', '1'))
-    tiles.append(tile('#', 'seed_3','B','seed_2', '#'))
-    tiles.append(tile('1', 'seed_4','B','seed_3', '1'))
-    tiles.append(tile('1', 'GROWT','B','seed_4', '1'))
+    tiles.append(Tile('h_0/1', 'seed_0','B','B', '1'))
+    tiles.append(Tile('0', 'seed_1','B','seed_0', '0'))
+    tiles.append(Tile('1', 'seed_2','B','seed_1', '1'))
+    tiles.append(Tile('#', 'seed_3','B','seed_2', '#'))
+    tiles.append(Tile('1', 'seed_4','B','seed_3', '1'))
+    tiles.append(Tile('1', 'GROWT','B','seed_4', '1'))
 
-    tiles.append(tile('GROW', 'seed_','B','GROWT', 'GROW'))
-    tiles.append(tile('#', 'GROWT','GROW','BR', '#'))
+    tiles.append(Tile('GROW', 'seed_','B','GROWT', 'GROW'))
+    tiles.append(Tile('#', 'GROWT','GROW','BR', '#'))
     glues.append(('GROW','GROW',1))
     glues.append(('GROWT','GROWT',2))
     for i in range(5):
